@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="happy-logo.jfif" alt="happy-logo" type="image/x-icon">
+    <title>Smile Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000000;
+        }
+        .container {
+            text-align: center;
+        }
+        .emoji {
+            font-size: 200px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: -20px; 
+        }
+        .emoji:hover {
+            transform: scale(1.1);
+        }
+        .caption {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 10px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+        .message {
+            color: white;
+            margin-top: 20px;
+            display: none;
+        }
+        #showMessageButton {
+            margin-top: 20px;
+            color: black; 
+            background-color: white; 
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px; 
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #showMessageButton:hover {
+            background-color: #ddd; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="caption" id="caption">Click me</div>
+        <div id="emoji" class="emoji">😍</div>
+        <button id="showMessageButton" style="display: none;">Show Message</button>
+        <div id="message" class="message">Sunshine, I just wanted to reach out about what happened earlier.<br> I’m truly sorry for raising my voice; that was never my intention.<br> I love you so much, and the last thing I want is to hurt you.<br> Your feelings mean everything to me, and I hate that I made you feel this way.<br> Can we talk about it? I really want to understand how you feel and make things right between us.<br> You’re so important to me, and I’m here to listen.</div>
+    </div>
+
+    <script>
+        const emojiDiv = document.getElementById('emoji');
+        const messageDiv = document.getElementById('message');
+        const button = document.getElementById('showMessageButton');
+        const captionDiv = document.getElementById('caption');
+        let isSmiling = true;
+
+        emojiDiv.addEventListener('click', () => {
+            isSmiling = !isSmiling;
+            emojiDiv.textContent = isSmiling ? '😍' : '😊';
+            messageDiv.style.display = 'none';
+            
+            captionDiv.textContent = isSmiling ? 'Click me' : 'Did you see a button?';
+            
+            button.style.display = isSmiling ? 'none' : 'block';
+        });
+
+        button.addEventListener('click', () => {
+            messageDiv.style.display = messageDiv.style.display === 'block' ? 'none' : 'block';
+        });
+    </script>
+</body>
+</html>
